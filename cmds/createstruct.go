@@ -1,17 +1,21 @@
 package cmds
 
+import (
+	"github.com/mastermind/headstartgo/cmds/templates"
+)
+
 func MakeDirs(c string) {
 	switch {
 	case c == "Flat":
-		MakeFlatTemp()
+		templates.FlatTemp()
 	case c == "Layared":
-		MakeLayared()
+		templates.Layared()
 	case c == "Domain-Driven":
-		MakeDomainD()
+		templates.DomainDriven()
 	case c == "Clean Architecture":
-		MakeClean()
+		templates.Clean()
 	case c == "Modular":
-		MakeModular()
-	}
+		templates.Modular()
 
+	}
 }

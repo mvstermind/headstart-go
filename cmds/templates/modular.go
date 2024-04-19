@@ -1,5 +1,5 @@
 package templates
 
-func FlatTemp() {
+func Modular() {
 
 }

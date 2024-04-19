@@ -15,9 +15,9 @@ import (
 const listHeight = 14
 
 var (
-	titleStyle        = lipgloss.NewStyle().MarginLeft(2).Foreground(lipgloss.Color("#04B2D9"))
-	itemStyle         = lipgloss.NewStyle().PaddingLeft(4).Foreground(lipgloss.Color("#04B2D9"))
-	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(2).Foreground(lipgloss.Color("#05F2C7")).Bold(true)
+	titleStyle        = lipgloss.NewStyle().MarginLeft(0).Foreground(lipgloss.Color("#04B2D9"))
+	itemStyle         = lipgloss.NewStyle().PaddingLeft(0).Foreground(lipgloss.Color("#04B2D9"))
+	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(0).Foreground(lipgloss.Color("#05F2C7")).Bold(true)
 	paginationStyle   = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
 	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(1)
 	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4).Foreground(lipgloss.Color("#04B2D9"))
@@ -89,7 +89,7 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 func (m model) View() string {
 	if m.choice != "" {
 		cmds.MakeDirs(m.choice)
-		return quitTextStyle.Render(fmt.Sprintf("You chose %s", m.choice))
+		return quitTextStyle.Render(fmt.Sprintf("Template created"))
 
 	}
 	if m.quitting {
