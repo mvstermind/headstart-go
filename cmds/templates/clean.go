@@ -7,6 +7,7 @@ import (
 	"path/filepath"
 )
 
+// TODO: CLEAN THIS UP
 func Clean() {
 	currentUser, err := os.Getwd()
 	if err != nil {
