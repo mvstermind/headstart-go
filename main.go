@@ -9,17 +9,18 @@ import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/lipgloss"
+	"github.com/mastermind/headstartgo/cmds"
 )
 
 const listHeight = 14
 
 var (
-	titleStyle        = lipgloss.NewStyle().MarginLeft(2).Foreground(lipgloss.Color("#45C4B0")).Bold(true)
-	itemStyle         = lipgloss.NewStyle().PaddingLeft(4).Foreground(lipgloss.Color("#45C4B0"))
-	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(2).Foreground(lipgloss.Color("#13678A")).Bold(true)
+	titleStyle        = lipgloss.NewStyle().MarginLeft(2).Foreground(lipgloss.Color("#04B2D9"))
+	itemStyle         = lipgloss.NewStyle().PaddingLeft(4).Foreground(lipgloss.Color("#04B2D9"))
+	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(2).Foreground(lipgloss.Color("#05F2C7")).Bold(true)
 	paginationStyle   = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
-	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(4)
-	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4)
+	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(1)
+	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4).Foreground(lipgloss.Color("#04B2D9"))
 )
 
 type item string
@@ -87,7 +88,9 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m model) View() string {
 	if m.choice != "" {
-		return quitTextStyle.Render(fmt.Sprintf("Your project template is being created"))
+		cmds.MakeDirs(m.choice)
+		return quitTextStyle.Render(fmt.Sprintf("You chose %s", m.choice))
+
 	}
 	if m.quitting {
 		return quitTextStyle.Render("Bye!")
@@ -99,15 +102,14 @@ func main() {
 	items := []list.Item{
 		item("Flat"),
 		item("Layared"),
-		item("Domain-Driven Design"),
-		item("Clean"),
+		item("Domain-Driven"),
+		item("Clean Architecture"),
 		item("Modular"),
 	}
 
 	const defaultWidth = 20
-
 	l := list.New(items, itemDelegate{}, defaultWidth, listHeight)
-	l.Title = "Chose your project template"
+	l.Title = "Choose your template"
 	l.SetShowStatusBar(false)
 	l.SetFilteringEnabled(false)
 	l.Styles.Title = titleStyle
@@ -121,4 +123,3 @@ func main() {
 		os.Exit(1)
 	}
 }
-
