@@ -6,12 +6,12 @@ import (
 	"path/filepath"
 )
 
-func FlatTemp() {
+func FlatTemp(rootDir string) {
 	currentUser, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
-	baseDir := filepath.Join(currentUser, RootDir)
+	baseDir := filepath.Join(currentUser, rootDir)
 
 	directories := []string{
 		baseDir,

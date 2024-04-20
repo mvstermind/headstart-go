@@ -6,16 +6,13 @@ import (
 	"path/filepath"
 )
 
-// this is default new template name
-var RootDir = "headstart"
-
-func Clean() {
+func Clean(rootDir string) {
 	currentUser, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	basedDir := filepath.Join(currentUser, RootDir)
+	basedDir := filepath.Join(currentUser, rootDir)
 
 	dirs := []string{
 		basedDir,

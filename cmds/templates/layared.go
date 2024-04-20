@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 )
 
-func Layared() {
+func Layared(rootDir string) {
 	directories := []string{
 		"web",
 		"web/static",
@@ -24,7 +24,7 @@ func Layared() {
 		log.Fatal(err)
 	}
 
-	baseDir := filepath.Join(current, RootDir)
+	baseDir := filepath.Join(current, rootDir)
 
 	err = os.MkdirAll(baseDir, 0750)
 	if err != nil {

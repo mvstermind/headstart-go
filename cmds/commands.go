@@ -9,4 +9,5 @@ func Commands(r string) {
 	case r == "-h":
 		fmt.Println("i'll add commands in here")
 	}
+	/// do some stuff
 }

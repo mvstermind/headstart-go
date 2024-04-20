@@ -6,13 +6,13 @@ import (
 	"path/filepath"
 )
 
-func DomainDriven() {
+func DomainDriven(rootDir string) {
 
 	currentDir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
-	basedDir := filepath.Join(currentDir, RootDir)
+	basedDir := filepath.Join(currentDir, rootDir)
 	err = os.MkdirAll(basedDir, 0750)
 	if err != nil {
 		log.Fatal(err)
