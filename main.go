@@ -15,12 +15,12 @@ import (
 const listHeight = 14
 
 var (
-	titleStyle        = lipgloss.NewStyle().MarginLeft(0).Foreground(lipgloss.Color("#04B2D9"))
-	itemStyle         = lipgloss.NewStyle().PaddingLeft(0).Foreground(lipgloss.Color("#04B2D9"))
+	titleStyle        = lipgloss.NewStyle().MarginLeft(0)
+	itemStyle         = lipgloss.NewStyle().PaddingLeft(0)
 	selectedItemStyle = lipgloss.NewStyle().PaddingLeft(0).Foreground(lipgloss.Color("#05F2C7")).Bold(true)
 	paginationStyle   = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
 	helpStyle         = list.DefaultStyles().HelpStyle.PaddingLeft(4).PaddingBottom(1)
-	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4).Foreground(lipgloss.Color("#04B2D9"))
+	quitTextStyle     = lipgloss.NewStyle().Margin(1, 0, 2, 4)
 )
 
 type item string

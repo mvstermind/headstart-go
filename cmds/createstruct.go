@@ -24,6 +24,5 @@ func MakeDirs(c string, root string) {
 		templates.Clean(root)
 	case c == "Modular":
 		templates.Modular(root)
-
 	}
 }
