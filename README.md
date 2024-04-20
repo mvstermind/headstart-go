@@ -1,6 +1,4 @@
-# I'm to lazy to  make my own structure type project
-Btw im this person^
-
+# I'm to lazy to structure my own project type project
 
  This is a general guideline, which you can adjust to match the specific needs of your project. 
  Every file structure is kept as it's separate file which makes it easier to modify
