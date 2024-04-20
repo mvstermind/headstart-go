@@ -88,7 +88,8 @@ func (m model) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 func (m model) View() string {
 	if m.choice != "" {
-		cmds.MakeDirs(m.choice)
+		cmds.MakeDirs(m.choice, RootDir)
+		cmds.Commands(RootDir)
 		return quitTextStyle.Render(fmt.Sprintf("Template created"))
 
 	}
@@ -97,6 +98,9 @@ func (m model) View() string {
 	}
 	return "\n" + m.list.View()
 }
+
+// THIS IS IMPORTANT AF
+var RootDir string = os.Args[1]
 
 func main() {
 	items := []list.Item{
