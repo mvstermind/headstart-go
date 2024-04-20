@@ -36,6 +36,7 @@ func Layared() {
 		log.Fatal(err)
 	}
 
+	//make direcotries and write content to files
 	for _, dir := range directories {
 		fullPath := filepath.Join(baseDir, dir)
 		err = os.MkdirAll(fullPath, 0750)

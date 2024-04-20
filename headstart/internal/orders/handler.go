@@ -1,4 +1,0 @@
-package orders
-
-func Hanlder() {
-}
