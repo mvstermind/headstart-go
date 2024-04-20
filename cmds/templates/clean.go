@@ -1,54 +1,55 @@
 package templates
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
 )
 
-// TODO: CLEAN THIS UP
+// this is default new template name
+var RootDir = "headstart"
+
 func Clean() {
 	currentUser, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
 	}
-	dir := filepath.Join(currentUser, "headstart/cmd/app")
 
-	err = os.MkdirAll(dir, 0750)
+	basedDir := filepath.Join(currentUser, RootDir)
 
-	if err != nil {
-		log.Fatal(err)
+	dirs := []string{
+		basedDir,
+		filepath.Join(basedDir, "cmd"),
+		filepath.Join(basedDir, "cmd/project"),
+		filepath.Join(basedDir, "internal"),
+		filepath.Join(basedDir, "internal/app"),
+		filepath.Join(basedDir, "internal/domain"),
+		filepath.Join(basedDir, "pkg"),
+		filepath.Join(basedDir, "pkg/utility"),
+		filepath.Join(basedDir, "api"),
+		filepath.Join(basedDir, "web"),
+		filepath.Join(basedDir, "scripts"),
+		filepath.Join(basedDir, "configs"),
+		filepath.Join(basedDir, "tests"),
+		filepath.Join(basedDir, "docs"),
 	}
-	err = os.WriteFile(fmt.Sprintf("%s/main.go", dir), []byte("package main\n\nfunc main() {\n\n}"), 0660)
 
-	dir = filepath.Join(currentUser, "headstart/internal/app")
-	err = os.MkdirAll(dir, 0750)
-
-	if err != nil {
-		log.Fatal(err)
+	filez := map[string]string{
+		filepath.Join(basedDir, "cmd/project/main.go"):           "package main\n\nfunc main(){\n}",
+		filepath.Join(basedDir, "internal/app/handler.go"):       "package app\n\nfunc Handler(){\n}",
+		filepath.Join(basedDir, "internal/app/service.go"):       "package app\n\nfunc Service(){\n}",
+		filepath.Join(basedDir, "internal/domain/model.go"):      "package domain\n\nfunc Model(){\n}",
+		filepath.Join(basedDir, "internal/domain/repository.go"): "package domain\n\nfunc Repository(){\n}",
 	}
-	err = os.WriteFile(fmt.Sprintf("%s/handler.go", dir), []byte("package app\n\nfunc hanlder() {\n}"), 0660)
-	err = os.WriteFile(fmt.Sprintf("%s/service.go", dir), []byte("package app\n\nfunc service() {\n}"), 0660)
 
-	if err != nil {
-		log.Fatal(err)
+	for _, directory := range dirs {
+		os.MkdirAll(directory, 0750)
 	}
-	dir = filepath.Join(currentUser, "headstart/internal/domain")
-	err = os.MkdirAll(dir, 0750)
 
-	err = os.WriteFile(fmt.Sprintf("%s/model.go", dir), []byte("package domain\n\nfunc model(){\n}"), 0660)
-	err = os.WriteFile(fmt.Sprintf("%s/repository.go", dir), []byte("package domain\n\nfunc repository(){\n}"), 0660)
-	dir = filepath.Join(currentUser, "headstart/pkg/utility")
-	err = os.MkdirAll(dir, 0750)
-	dir = filepath.Join(currentUser, "headstart/web")
-	err = os.MkdirAll(dir, 0750)
-	dir = filepath.Join(currentUser, "headstart/scripts")
-	err = os.MkdirAll(dir, 0750)
-	dir = filepath.Join(currentUser, "headstart/configs")
-	err = os.MkdirAll(dir, 0750)
-	dir = filepath.Join(currentUser, "headstart/tests")
-	err = os.MkdirAll(dir, 0750)
-	dir = filepath.Join(currentUser, "headstart/docs")
-	err = os.MkdirAll(dir, 0750)
+	for file, content := range filez {
+		err := os.WriteFile(file, []byte(content), 0660)
+		if err != nil {
+			log.Fatal(err)
+		}
+	}
 }

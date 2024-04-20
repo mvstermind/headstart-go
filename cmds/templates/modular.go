@@ -25,7 +25,7 @@ func Modular() {
 		log.Fatal(err)
 	}
 
-	basePath := filepath.Join(currentDir, "headstart/module1")
+	basePath := filepath.Join(currentDir, RootDir, "/module1")
 	for _, dir := range directories {
 		err := os.MkdirAll(filepath.Join(basePath, dir), 0750)
 		if err != nil {
@@ -33,7 +33,7 @@ func Modular() {
 		}
 	}
 
-	err = os.MkdirAll(filepath.Join(currentDir, "headstart/module2"), 0750)
+	err = os.MkdirAll(filepath.Join(currentDir, RootDir, "/module2"), 0750)
 	if err != nil {
 		log.Fatal(err)
 	}

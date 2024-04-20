@@ -11,7 +11,7 @@ func FlatTemp() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	baseDir := filepath.Join(currentUser, "headstart")
+	baseDir := filepath.Join(currentUser, RootDir)
 
 	directories := []string{
 		baseDir,

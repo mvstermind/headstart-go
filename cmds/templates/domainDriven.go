@@ -12,7 +12,7 @@ func DomainDriven() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	basedDir := filepath.Join(currentDir, "headstart")
+	basedDir := filepath.Join(currentDir, RootDir)
 	err = os.MkdirAll(basedDir, 0750)
 	if err != nil {
 		log.Fatal(err)

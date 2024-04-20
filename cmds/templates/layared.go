@@ -24,7 +24,7 @@ func Layared() {
 		log.Fatal(err)
 	}
 
-	baseDir := filepath.Join(current, "headstart")
+	baseDir := filepath.Join(current, RootDir)
 
 	err = os.MkdirAll(baseDir, 0750)
 	if err != nil {
