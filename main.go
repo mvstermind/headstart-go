@@ -99,8 +99,8 @@ func (m model) View() string {
 	return "\n" + m.list.View()
 }
 
-// THIS IS IMPORTANT AF
-var RootDir string = os.Args[1]
+// get sys argv and handle all of that stuff
+var RootDir string = GetSysarg()
 
 func main() {
 	items := []list.Item{
